@@ -40,3 +40,13 @@ nav ul {
   list-style: none;
   gap: 4rem;
 }
+
+.title {
+  color: white;
+  z-index: 2;
+  position: absolute;
+  font-size: 3rem;
+  left: 50%;
+  top: 95%;
+  transform: translate(-50%, -75%);
+}
