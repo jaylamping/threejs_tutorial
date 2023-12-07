@@ -39,11 +39,16 @@ scene.add(camera);
 
 /* controls */
 const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true;
+controls.enablePan = false;
+controls.enableZoom = false;
+controls.autoRotate = true;
 
 /* renderer */
 const renderer = new THREE.WebGLRenderer({ canvas });
 renderer.setSize(sizes.width, sizes.height);
 renderer.render(scene, camera);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
 /* listeners */
 window.addEventListener('resize', () => {
@@ -59,6 +64,7 @@ window.addEventListener('resize', () => {
 
 /* main loop */
 const loop = () => {
+  controls.update();
   window.requestAnimationFrame(loop);
   renderer.render(scene, camera);
 };
