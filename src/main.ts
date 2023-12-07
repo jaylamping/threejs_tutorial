@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import './style.css';
 
 const canvas = document.querySelector('.webgl') as HTMLCanvasElement;
@@ -36,6 +37,9 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.z = 20;
 scene.add(camera);
 
+/* controls */
+const controls = new OrbitControls(camera, canvas);
+
 /* renderer */
 const renderer = new THREE.WebGLRenderer({ canvas });
 renderer.setSize(sizes.width, sizes.height);
@@ -52,3 +56,11 @@ window.addEventListener('resize', () => {
   renderer.setSize(sizes.width, sizes.height);
   renderer.render(scene, camera);
 });
+
+/* main loop */
+const loop = () => {
+  window.requestAnimationFrame(loop);
+  renderer.render(scene, camera);
+};
+
+loop();
