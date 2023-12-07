@@ -6,7 +6,7 @@ import './style.css';
 const canvas = document.querySelector('.webgl') as HTMLCanvasElement;
 
 let mouseDown = false;
-let rgb = [0, 0, 0];
+let rgb = new Array(3);
 
 /* scene */
 const scene = new THREE.Scene();
@@ -15,6 +15,8 @@ const scene = new THREE.Scene();
 const geometry = new THREE.SphereGeometry(3, 64, 64);
 const material = new THREE.MeshStandardMaterial({
   color: '#00ff83',
+  roughness: 0.4,
+  wireframe: true,
 });
 
 const mesh = new THREE.Mesh(geometry, material);
